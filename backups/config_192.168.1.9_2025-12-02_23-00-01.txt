@@ -1,0 +1,206 @@
+
+*************************************************************
+*                      Router Huawei AR1                    *
+*                      Colegio Getsemani                    *
+*                                                           *
+*              Automatizacion y Respaldo de Configs         *
+*            Implementacion SSH Python Github Backups       *
+*                                                           *
+*                      Desarrolladores:                     *
+*                        Gian Palma                         *
+*                      Milton Guajardo                      *
+*                                                           *
+*             Ingenieros en Conectividad y Redes            *
+*************************************************************
+
+
+
+Building configuration...
+
+Current configuration : 4321 bytes
+!
+! Last configuration change at 00:46:31 UTC Wed Dec 3 2025 by administracion
+!
+version 16.9
+service timestamps debug datetime msec
+service timestamps log datetime msec
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+platform console virtual
+!
+hostname AR1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+ip domain name colegiogetsemani
+!
+!
+!
+login on-success log
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+! 
+! 
+! 
+! 
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-714623873
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-714623873
+ revocation-check none
+ rsakeypair TP-self-signed-714623873
+!
+!
+crypto pki certificate chain TP-self-signed-714623873
+ certificate self-signed 01
+  3082032E 30820216 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  30312E30 2C060355 04031325 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 37313436 32333837 33301E17 0D323531 32303330 30303534 
+  325A170D 33303031 30313030 30303030 5A303031 2E302C06 03550403 1325494F 
+  532D5365 6C662D53 69676E65 642D4365 72746966 69636174 652D3731 34363233 
+  38373330 82012230 0D06092A 864886F7 0D010101 05000382 010F0030 82010A02 
+  82010100 A105E0F4 DD5EE3FD C77464F6 B59FEC30 A23B31D7 5935B36B 2E391866 
+  8F6C5B74 D4EF0872 CEEDA46E 02C6F037 141D15B9 9DB734DC AB23AAF4 A7B5282E 
+  0CC45F00 673922D9 E5C861A5 DE671053 3935E954 D5CEABA5 E9455884 E4B63CA4 
+  D48FEC0D F9FE562D 523BBC6D 3701B90C C326CD86 197AA6F6 D460DCF7 01C555B0 
+  E6CC15E0 C6A72BDF A54BC775 E5969A56 F3EF3A3C 2A7DB42F 4865002F 2E5CA020 
+  D6557670 71D33649 710BE1AA 4B07A3CF 91D575F5 01DE369F 146EAB9B 7D642EB3 
+  1EF3171B 2A035C7E F092C6CF AF94739C C19C443A 1BB24E6F 6B6D10EC DEFC4D56 
+  59904137 C307CDA7 8E29D919 60475C04 8E57A7CB DE70CC88 05888DD9 D1761491 
+  C3EC10B7 02030100 01A35330 51300F06 03551D13 0101FF04 05300301 01FF301F 
+  0603551D 23041830 168014F9 3B84DF94 CE528CF5 795D9688 C961D0BB 400D6930 
+  1D060355 1D0E0416 0414F93B 84DF94CE 528CF579 5D9688C9 61D0BB40 0D69300D 
+  06092A86 4886F70D 01010505 00038201 0100533D 35D00F45 B6495783 24AB00CF 
+  9FA8692A CE285CD3 A9A03ABD FAED3912 6A08E754 24F88886 749CF8FA 11E314B3 
+  7B4059D2 3A7D9A22 E39FC2D4 21502A93 D9A2ED2C C806E736 8116A02E BDC4E9C9 
+  A98F31E3 3E5545A1 D745604C DBE7F9F0 DE3E597A FAB481BE 02CE174C 5783F537 
+  196699CD 18E58A78 FC2BA73E F9D1C758 EE87AB8E 4A8D1E21 6F793986 5EB36802 
+  C2613C08 B1AAC41C 80488702 0435E64D 80AB2EDA F314A8AD 1B6D446E 92192DE2 
+  5DBFB7EA 3DCD18AD A3C079A5 AA7A9237 B931EF8A 36EA3E84 FBD0AF9E 3302739A 
+  A6208EEA 59891D9C 1E9F5885 E500AEAA D2CCE6C5 207E4B25 A37E2CB4 93924B11 
+  AA3D71B9 C71C2D7F 1D537EE8 DBA9BEED E446
+  	quit
+!
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 9J6UUXDEZ88
+no license smart enable
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+netconf-yang
+!
+restconf
+!
+username cisco privilege 15 password 0 cisco123!
+username administracion privilege 15 secret 5 $1$4Z4X$DIHC7LDylimTWpvF7kHUA/
+!
+redundancy
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+!
+!
+interface GigabitEthernet1
+ description VBox
+ ip address dhcp
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+ip forward-protocol nd
+no ip http server
+ip http authentication local
+ip http secure-server
+!
+ip ssh version 2
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+banner motd ^C
+*************************************************************
+*                      Router Huawei AR1                    *
+*                      Colegio Getsemani                    *
+*                                                           *
+*              Automatizacion y Respaldo de Configs         *
+*            Implementacion SSH Python Github Backups       *
+*                                                           *
+*                      Desarrolladores:                     *
+*                        Gian Palma                         *
+*                      Milton Guajardo                      *
+*                                                           *
+*             Ingenieros en Conectividad y Redes            *
+*************************************************************
+^C
+!
+line con 0
+ logging synchronous
+ stopbits 1
+line vty 0 4
+ login local
+ transport input ssh
+line vty 5 15
+ login local
+ transport input ssh
+!
+!
+!
+!
+!
+!
+end
